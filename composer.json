@@ -1,6 +1,7 @@
 {
     "name": "slick-pay-algeria/transfer-laravel",
     "description": "Laravel package for Slick-Pay Transfer API implementation",
+    "license": "MIT",
     "authors": [
         {
             "name": "Slick-Pay",
