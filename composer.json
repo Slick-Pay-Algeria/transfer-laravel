@@ -1,0 +1,31 @@
+{
+    "name": "slick-pay-algeria/transfer-laravel",
+    "description": "Laravel package for Slick-Pay Transfer API implementation",
+    "authors": [
+        {
+            "name": "Slick-Pay",
+            "email": "contact@slick-pay.com"
+        },
+        {
+            "name": "Azimut BS",
+            "email": "contact@azimutbs.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SlickPay\\Transfer\\": "src/",
+            "SlickPay\\BankAccount\\": "src/",
+            "SlickPay\\Receiver\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SlickPay\\Transfer\\TransferServiceProvider"
+            ]
+        }
+    }
+}
