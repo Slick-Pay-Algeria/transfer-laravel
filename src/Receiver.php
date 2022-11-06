@@ -58,8 +58,6 @@ class Receiver
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
             curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
-                "Accept: application/json",
-                "Content-Type: application/json",
                 "Authorization: Bearer {$public_key}",
             ));
 
@@ -83,7 +81,7 @@ class Receiver
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    $result['msg']
+                    !empty($result['message']) ? $result['message'] : $result['msg']
                 ],
             ];
 
@@ -153,8 +151,6 @@ class Receiver
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
             curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
-                "Accept: application/json",
-                "Content-Type: application/json",
                 "Authorization: Bearer {$public_key}",
             ));
 
@@ -178,7 +174,7 @@ class Receiver
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    $result['msg']
+                    !empty($result['message']) ? $result['message'] : $result['msg']
                 ],
             ];
 
@@ -230,8 +226,6 @@ class Receiver
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
             curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
-                "Accept: application/json",
-                "Content-Type: application/json",
                 "Authorization: Bearer {$public_key}",
             ));
 
@@ -255,7 +249,7 @@ class Receiver
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    $result['msg']
+                    !empty($result['message']) ? $result['message'] : $result['msg']
                 ],
             ];
 
@@ -273,11 +267,7 @@ class Receiver
         return [
             'success'  => 1,
             'error'    => 0,
-            'response' => [
-                'data'  => $result['data'],
-                'meta'  => $result['meta'],
-                'links' => $result['links'],
-            ]
+            'response' => $result
         ];
     }
 }

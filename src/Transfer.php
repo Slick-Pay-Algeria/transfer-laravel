@@ -24,13 +24,17 @@ class Transfer
         if (empty($public_key)) return [
             'success'  => 0,
             'error'    => 1,
-            'messages' => __("You have to set a public key, from your config file."),
+            'messages' => [
+                __("You have to set a public key, from your config file.")
+            ],
         ];
 
         if (!is_numeric($amount) || $amount <= 100) return [
             'success'  => 0,
             'error'    => 1,
-            'messages' => __("The amount must be a valid number."),
+            'messages' => [
+                __("The amount must be a valid number.")
+            ],
         ];
 
         try {
@@ -50,8 +54,6 @@ class Transfer
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
             curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
-                "Accept: application/json",
-                "Content-Type: application/json",
                 "Authorization: Bearer {$public_key}",
             ));
 
@@ -75,7 +77,7 @@ class Transfer
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    $result['msg']
+                    !empty($result['message']) ? $result['message'] : $result['msg']
                 ],
             ];
 
@@ -151,8 +153,6 @@ class Transfer
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
             curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
-                "Accept: application/json",
-                "Content-Type: application/json",
                 "Authorization: Bearer {$public_key}",
             ));
 
@@ -176,7 +176,7 @@ class Transfer
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    $result['msg']
+                    !empty($result['message']) ? $result['message'] : $result['msg']
                 ],
             ];
 
@@ -232,8 +232,6 @@ class Transfer
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
             curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
-                "Accept: application/json",
-                "Content-Type: application/json",
                 "Authorization: Bearer {$public_key}",
             ));
 
@@ -263,7 +261,7 @@ class Transfer
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    $result['msg']
+                    !empty($result['message']) ? $result['message'] : $result['msg']
                 ],
             ];
 
@@ -324,8 +322,6 @@ class Transfer
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
             curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
-                "Accept: application/json",
-                "Content-Type: application/json",
                 "Authorization: Bearer {$public_key}",
             ));
 
@@ -349,7 +345,7 @@ class Transfer
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    $result['msg']
+                    !empty($result['message']) ? $result['message'] : $result['msg']
                 ],
             ];
 
@@ -367,11 +363,7 @@ class Transfer
         return [
             'success'  => 1,
             'error'    => 0,
-            'response' => [
-                'data'  => $result['data'],
-                'meta'  => $result['meta'],
-                'links' => $result['links'],
-            ]
+            'response' => $result
         ];
     }
 }

@@ -79,9 +79,7 @@ Default usage :
 
 use SlickPay\Transfer\Transfer;
 
-$result = Transfer::createPayment([
-    'amount' => 1000,
-]);
+$result = Transfer::calculateCommission(1000);
 
 dd($result);
 ```
@@ -225,6 +223,8 @@ The result will be an array like :
     * **links:** <**array**>, pagination links that can be used to generate a pagination for the user UI.
     * **meta:** <**array**>, will contain all pagination data, such as: **total**, **current_page**, **per_page**...
 
+> **Important:** The indexes **response.meta** and **response.links** will be present only when resulted rows are paginated (pass an integer for paymentHistory).
+
 ### BankAccount
 
 By using the **BankAccount** class, you will be able to **create user bank accounts**, **update accounts**, also **get user accounts list**.
@@ -349,6 +349,8 @@ The result will be an array like :
     * **data:** <**array**>, will contain all the payment rows.
     * **links:** <**array**>, pagination links that can be used to generate a pagination for the user UI.
     * **meta:** <**array**>, will contain all pagination data, such as: **total**, **current_page**, **per_page**...
+
+> **Important:** The indexes **response.meta** and **response.links** will be present only when resulted rows are paginated (pass an integer for paymentHistory).
 
 ### Receiver
 
@@ -482,6 +484,8 @@ The result will be an array like :
     * **data:** <**array**>, will contain all the payment rows.
     * **links:** <**array**>, pagination links that can be used to generate a pagination for the user UI.
     * **meta:** <**array**>, will contain all pagination data, such as: **total**, **current_page**, **per_page**...
+
+> **Important:** The indexes **response.meta** and **response.links** will be present only when resulted rows are paginated (pass an integer for paymentHistory).
 
 ## More help
    * [Slick-Pay website](https://slick-pay.com)
