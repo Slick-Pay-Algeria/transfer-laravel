@@ -24,7 +24,9 @@ class BankAccount
         if (empty($public_key)) return [
             'success'  => 0,
             'error'    => 1,
-            'messages' => __("You have to set a public key, from your config file."),
+            'messages' => [
+                __("You have to set a public key, from your config file.")
+            ],
         ];
 
         $validator = Validator::make($params, [
@@ -46,7 +48,7 @@ class BankAccount
 
             $cURL = curl_init();
 
-            $domain_name = config('transfer.sandbox', true) 
+            $domain_name = config('transfer.sandbox', true)
                 ? "dev.transfer.slick-pay.com"
                 : "transfer.slick-pay.com";
 
@@ -72,7 +74,7 @@ class BankAccount
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    "Error ! Please, try later"
+                    __("Error ! Please, try later")
                 ],
             ];
 
@@ -101,7 +103,7 @@ class BankAccount
             'response' => $result['data']
         ];
     }
-    
+
     /**
      * Update a existing user bank account
      *
@@ -116,7 +118,9 @@ class BankAccount
         if (empty($public_key)) return [
             'success'  => 0,
             'error'    => 1,
-            'messages' => __("You have to set a public key, from your config file."),
+            'messages' => [
+                __("You have to set a public key, from your config file.")
+            ],
         ];
 
         $validator = Validator::make($params, [
@@ -138,7 +142,7 @@ class BankAccount
 
             $cURL = curl_init();
 
-            $domain_name = config('transfer.sandbox', true) 
+            $domain_name = config('transfer.sandbox', true)
                 ? "dev.transfer.slick-pay.com"
                 : "transfer.slick-pay.com";
 
@@ -164,7 +168,7 @@ class BankAccount
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    "Error ! Please, try later"
+                    __("Error ! Please, try later")
                 ],
             ];
 
@@ -200,21 +204,23 @@ class BankAccount
      * @param  integer $offset  Pagination offset
      * @return array
      */
-    public static function list(int $offset = 0): array 
+    public static function list(int $offset = 0): array
     {
         $public_key = config('transfer.public_key', null);
 
         if (empty($public_key)) return [
             'success'  => 0,
             'error'    => 1,
-            'messages' => __("You have to set a public key, from your config file."),
+            'messages' => [
+                __("You have to set a public key, from your config file.")
+            ],
         ];
-        
+
         try {
 
             $cURL = curl_init();
 
-            $domain_name = config('transfer.sandbox', true) 
+            $domain_name = config('transfer.sandbox', true)
                 ? "dev.transfer.slick-pay.com"
                 : "transfer.slick-pay.com";
 
@@ -239,7 +245,7 @@ class BankAccount
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    "Error ! Please, try later"
+                    __("Error ! Please, try later")
                 ],
             ];
 

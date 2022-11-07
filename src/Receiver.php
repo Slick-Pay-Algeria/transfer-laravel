@@ -24,7 +24,9 @@ class Receiver
         if (empty($public_key)) return [
             'success'  => 0,
             'error'    => 1,
-            'messages' => __("You have to set a public key, from your config file."),
+            'messages' => [
+                __("You have to set a public key, from your config file.")
+            ],
         ];
 
         $validator = Validator::make($params, [
@@ -47,7 +49,7 @@ class Receiver
 
             $cURL = curl_init();
 
-            $domain_name = config('transfer.sandbox', true) 
+            $domain_name = config('transfer.sandbox', true)
                 ? "dev.transfer.slick-pay.com"
                 : "transfer.slick-pay.com";
 
@@ -73,7 +75,7 @@ class Receiver
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    "Error ! Please, try later"
+                    __("Error ! Please, try later")
                 ],
             ];
 
@@ -102,7 +104,7 @@ class Receiver
             'response' => $result['data']
         ];
     }
-    
+
     /**
      * Update a existing user receiver
      *
@@ -117,7 +119,9 @@ class Receiver
         if (empty($public_key)) return [
             'success'  => 0,
             'error'    => 1,
-            'messages' => __("You have to set a public key, from your config file."),
+            'messages' => [
+                __("You have to set a public key, from your config file.")
+            ],
         ];
 
         $validator = Validator::make($params, [
@@ -140,7 +144,7 @@ class Receiver
 
             $cURL = curl_init();
 
-            $domain_name = config('transfer.sandbox', true) 
+            $domain_name = config('transfer.sandbox', true)
                 ? "dev.transfer.slick-pay.com"
                 : "transfer.slick-pay.com";
 
@@ -166,7 +170,7 @@ class Receiver
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    "Error ! Please, try later"
+                    __("Error ! Please, try later")
                 ],
             ];
 
@@ -202,21 +206,23 @@ class Receiver
      * @param  integer $offset  Pagination offset
      * @return array
      */
-    public static function list(int $offset = 0): array 
+    public static function list(int $offset = 0): array
     {
         $public_key = config('transfer.public_key', null);
 
         if (empty($public_key)) return [
             'success'  => 0,
             'error'    => 1,
-            'messages' => __("You have to set a public key, from your config file."),
+            'messages' => [
+                __("You have to set a public key, from your config file.")
+            ],
         ];
-        
+
         try {
 
             $cURL = curl_init();
 
-            $domain_name = config('transfer.sandbox', true) 
+            $domain_name = config('transfer.sandbox', true)
                 ? "dev.transfer.slick-pay.com"
                 : "transfer.slick-pay.com";
 
@@ -241,7 +247,7 @@ class Receiver
                 'success'  => 0,
                 'error'    => 1,
                 'messages' => [
-                    "Error ! Please, try later"
+                    __("Error ! Please, try later")
                 ],
             ];
 
